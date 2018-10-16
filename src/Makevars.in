@@ -1,0 +1,27 @@
+CXX_STD = CXX11
+CXX1X=nvcc
+
+FLOAT_LIBS = `${R_HOME}/bin/Rscript -e "float:::ldflags()"`
+FLOAT_INCL = `${R_HOME}/bin/Rscript -e "float:::cppflags()"`
+
+PKG_CPPFLAGS = @FASTRAND_CPPFLAGS@
+PKG_CXXFLAGS = @FASTRAND_CXXFLAGS@
+PKG_LIBS = @FASTRAND_LDFLAGS@ $(FLOAT_LIBS) -L/usr/local/cuda/lib64 -lcudart -lcublas
+
+CXX_OBJS = curand_uniform.o
+C_OBJS = curand_native.o getseed.o setnan.o
+OBJECTS = $(CXX_OBJS) $(C_OBJS)
+
+all: $(SHLIB)
+
+%.o: %.cu
+	nvcc -DGPU -O2 -x cu -c -arch=sm_61 -Xcompiler "-fPIC $(FLOAT_INCL) $(SPMD_CPPFLAGS) -I/usr/share/R/include" $< -o $@
+
+curand.so: $(OBJECTS)
+	nvcc --shared $(OBJECTS) -o $@
+
+
+
+
+clean:
+	@rm -rf *.o *.so *.dll Makevars $(USER_CONF) $(SHLIB) $(OBJECTS)
