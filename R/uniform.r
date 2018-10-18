@@ -15,11 +15,7 @@
 #' @param type
 #' 'double' or 'float'
 #' 
-#' @references
-#' \url{https://thrust.github.io/doc/group__predefined__random.html}
-#' 
 #' @useDynLib curand R_curand_uniform
-#' 
 #' @export
 curand_uniform = function(n, min=0, max=1, seed=getseed(), type="double")
 {
