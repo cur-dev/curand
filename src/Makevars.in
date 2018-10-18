@@ -9,7 +9,7 @@ CUDA_LDFLAGS = @CUDA_LDFLAGS@
 
 PKG_LIBS = $(FLOAT_LIBS) $(CUDA_LDFLAGS) -lcudart
 
-CUDA_OBJS = init.o normal.o uniform.o
+CUDA_OBJS = normal.o setup.o uniform.o
 C_OBJS = curand_native.o getseed.o setnan.o
 OBJECTS = $(CUDA_OBJS) $(C_OBJS)
 
@@ -17,8 +17,6 @@ all: $(SHLIB)
 
 %.o: %.cu
 	$(NVCC) -DGPU -O2 -x cu -c -arch=sm_61 -Xcompiler "-fPIC $(FLOAT_INCL) $(R_CPPFLAGS)" $< -o $@
-curand.so: $(OBJECTS)
-	$(NVCC) --shared $(OBJECTS) -o $@
 
 
 clean:
