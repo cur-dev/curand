@@ -23,7 +23,19 @@ The development version is maintained on GitHub:
 remotes::install_github("wrathematics/curand")
 ```
 
-You will need to have an installation of CUDA to build the package.
+You will need to have an installation of CUDA to build the package. You will also need the development version of the float package:
+
+```r
+remotes::install_github("wrathematics/float")
+```
+
+Also, R must have been compiled with `--enable-R-shlib=yes`. Otherwise, the package probably won't build. I hope to fix this eventually.
+
+
+
+<!-- ## Package Use
+
+single gpu, etc -->
 
 
 
@@ -85,4 +97,19 @@ system.time(curand_uniform(100))
 system.time(runif(100))
 ## user  system elapsed 
 ##    0       0       0 
+```
+
+32-bit floats are also natively supported:
+
+```r
+curand_uniform(100, type="float")
+## # A float32 vector: 100
+## [1] 0.810296 0.447812 0.064345 0.643384 0.495918 ... 
+
+system.time(curand_uniform(1e8))
+##  user  system elapsed 
+## 0.172   0.332   0.504 
+system.time(curand_uniform(1e8, type="float"))
+##  user  system elapsed 
+## 0.088   0.196   0.282 
 ```
