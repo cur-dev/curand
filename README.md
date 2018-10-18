@@ -23,7 +23,7 @@ The development version is maintained on GitHub:
 remotes::install_github("wrathematics/curand")
 ```
 
-You will need to have an installation of CUDA to build the package. You will also need the development version of the float package:
+You will need to have an installation of CUDA to build the package. You can download CUDA from the [nvidia website](https://developer.nvidia.com/cuda-downloads). You will also need the development version of the float package:
 
 ```r
 remotes::install_github("wrathematics/float")
@@ -33,9 +33,13 @@ Also, R must have been compiled with `--enable-R-shlib=yes`. Otherwise, the pack
 
 
 
-<!-- ## Package Use
+## Package Use
 
-single gpu, etc -->
+We offer several generators that behave similarly to those in the stats package. So `curand_uniform()` works like `runif()`, `curand_normal()` works like `rnorm()`, etc. Function calls map to the CUDA curand library, but the function arguments/behavior are similar to their base R counterparts.
+
+Only one gpu will be used at a time. My opinion is that if you want to do multi-gpu, you should be distributing your work with something like MPI. See the [pbdMPI package](https://cran.r-project.org/web/packages/pbdMPI/index.html).
+
+Generators do not respect `set.seed()` seeds. You have to pass a seed as an argument to the function. By default, a seed that mixes the bits of the date, time, and pid via a hash mixing function will be used.
 
 
 
