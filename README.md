@@ -1,7 +1,6 @@
 # curand
 
 * **Version:** 0.1-0
-* **Status:** [![Build Status](https://travis-ci.org/wrathematics/curand.png)](https://travis-ci.org/wrathematics/curand)
 * **License:** [BSD 2-Clause](http://opensource.org/licenses/BSD-2-Clause)
 * **Author:** Drew Schmidt
 
