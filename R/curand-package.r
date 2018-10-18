@@ -1,6 +1,7 @@
 #' curand
 #' 
-#' TODO
+#' Random number generators that run on the gpu via CUDA's curand
+#' library.
 #' 
 #' @importFrom float float32
 #' 

@@ -5,7 +5,8 @@
 \alias{curand-package}
 \title{curand}
 \description{
-TODO
+Random number generators that run on the gpu via CUDA's curand
+library.
 }
 \author{
 Drew Schmidt
