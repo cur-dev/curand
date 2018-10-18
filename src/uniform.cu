@@ -1,5 +1,5 @@
-#include "cu_utils.h"
-#include "rand_utils.h"
+#include "cu_utils.hh"
+#include "rand_utils.hh"
 #include "Rcurand.h"
 
 
