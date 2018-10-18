@@ -584,7 +584,7 @@ PACKAGE_URL=
 ac_unique_file="DESCRIPTION"
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
-R_CFLAGS
+R_CPPFLAGS
 NVCC
 CUDA_LDFLAGS
 CUDA_CFLAGS
@@ -1829,7 +1829,7 @@ if test -z "${R_HOME}"; then
   exit 1
 fi
 CC=`"${R_HOME}/bin/R" CMD config CC`
-R_CFLAGS=`"${R_HOME}/bin/R" CMD config --cppflags`
+R_CPPFLAGS=`"${R_HOME}/bin/R" CMD config --cppflags`
 
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
@@ -2933,7 +2933,7 @@ echo "  >> NVCC=${NVCC}"
 echo "  >> CUDA_CFLAGS=${CUDA_CFLAGS}"
 echo "  >> CUDA_LDFLAGS=${CUDA_LDFLAGS}"
 echo "* R Report:"
-echo "  >> R_CFLAGS=${R_CFLAGS}"
+echo "  >> R_CPPFLAGS=${R_CPPFLAGS}"
 echo "*************************************************************************"
 echo " "
 

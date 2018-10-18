@@ -7,7 +7,7 @@ if test -z "${R_HOME}"; then
   exit 1
 fi
 CC=`"${R_HOME}/bin/R" CMD config CC`
-R_CFLAGS=`"${R_HOME}/bin/R" CMD config --cppflags`
+R_CPPFLAGS=`"${R_HOME}/bin/R" CMD config --cppflags`
 
 AC_PROG_CC_C99
 AX_CHECK_CUDA()
@@ -21,7 +21,7 @@ echo "  >> NVCC=${NVCC}"
 echo "  >> CUDA_CFLAGS=${CUDA_CFLAGS}"
 echo "  >> CUDA_LDFLAGS=${CUDA_LDFLAGS}"
 echo "* R Report:"
-echo "  >> R_CFLAGS=${R_CFLAGS}"
+echo "  >> R_CPPFLAGS=${R_CPPFLAGS}"
 echo "*************************************************************************"
 echo " "
 
@@ -31,5 +31,5 @@ dnl Start to substitute templates
 AC_SUBST(NVCC)
 AC_SUBST(CUDA_CFLAGS)
 AC_SUBST(CUDA_LDFLAGS)
-AC_SUBST(R_CFLAGS)
+AC_SUBST(R_CPPFLAGS)
 AC_OUTPUT(src/Makevars)
