@@ -2,10 +2,6 @@
 #' 
 #' Generate from a uniform distribution using a gpu.
 #' 
-#' @details
-#' The function uses thrust's implementation of the minimal standard random
-#' number generation algorithm.
-#' 
 #' @param n 
 #' The number of values to generate
 #' @param min,max 
