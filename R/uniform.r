@@ -18,6 +18,16 @@ curand_uniform = function(n, min=0, max=1, seed=getseed(), type="double")
   type = match.arg(tolower(type), c("double", "float"))
   type = ifelse(type == "double", TYPE_DOUBLE, TYPE_FLOAT)
   
+  if (n < 0)
+    stop("invalid arguments")
+  else if (n == 0)
+  {
+    if (type == TYPE_DOUBLE)
+      return(numeric(0))
+    else
+      return(float(0))
+  }
+  
   n1 = floor(sqrt(n))
   n2 = n - n1*n1
   

@@ -19,6 +19,11 @@ curand_poisson = function(n, lambda=1, seed=getseed(), type="double")
   n1 = floor(sqrt(n))
   n2 = n - n1*n1
   
+  if (n < 0)
+    stop("invalid arguments")
+  else if (n == 0)
+    return(integer(0))
+  
   if (lambda < 0 || is.badval(lambda))
   {
     warning("NAs produced")
