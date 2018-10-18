@@ -14,10 +14,6 @@ curand_uniform(n, min = 0, max = 1, seed = getseed(), type = "double")
 \item{seed}{Seed for the random number generation.}
 
 \item{type}{'double' or 'float'}
-
-\item{nthreads}{An optional argument for specifying the number of threads
-(in the case of OpenMP or TBB backends) that the routine should (at most)
-use.  Does nothing with a CUDA backend.}
 }
 \description{
 Generate from a uniform distribution in parallel.

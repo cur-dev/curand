@@ -12,10 +12,6 @@
 #' Parameters for uniform random variables.
 #' @param seed 
 #' Seed for the random number generation.
-#' @param nthreads 
-#' An optional argument for specifying the number of threads
-#' (in the case of OpenMP or TBB backends) that the routine should (at most)
-#' use.  Does nothing with a CUDA backend.
 #' @param type
 #' 'double' or 'float'
 #' 
