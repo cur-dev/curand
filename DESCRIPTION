@@ -7,9 +7,9 @@ License: BSD 2-clause License + file LICENSE
 Depends:
     R (>= 3.1.0)
 Imports:
-    float (>= 0.1-2)
+    float (>= 0.2-1)
 LinkingTo:
-    float (>= 0.1-2)
+    float (>= 0.2-1)
 SystemRequirements: GNU make. Nvidia's CUDA toolkit (>= 9.1)
 ByteCompile: yes
 BugReports: https://github.com/wrathematics/curand/issues
