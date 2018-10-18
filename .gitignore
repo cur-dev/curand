@@ -7,3 +7,5 @@
 *.swp
 
 src/Makevars
+
+aclocal.m4
