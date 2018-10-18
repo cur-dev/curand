@@ -16,7 +16,7 @@ curand_uniform(n, min = 0, max = 1, seed = getseed(), type = "double")
 \item{type}{'double' or 'float'}
 }
 \description{
-Generate from a uniform distribution in parallel.
+Generate from a uniform distribution using a gpu.
 }
 \details{
 The function uses thrust's implementation of the minimal standard random

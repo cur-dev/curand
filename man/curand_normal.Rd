@@ -2,7 +2,7 @@
 % Please edit documentation in R/normal.r
 \name{curand_normal}
 \alias{curand_normal}
-\title{rnorm}
+\title{curand_normal}
 \usage{
 curand_normal(n, mean = 0, sd = 1, seed = getseed(), type = "double")
 }
@@ -16,6 +16,6 @@ curand_normal(n, mean = 0, sd = 1, seed = getseed(), type = "double")
 \item{type}{'double' or 'float'}
 }
 \description{
-Generate from a normal distribution in parallel.
+Generate from a normal distribution using a gpu.
 }
 

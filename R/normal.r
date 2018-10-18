@@ -1,6 +1,6 @@
-#' rnorm
+#' curand_normal
 #' 
-#' Generate from a normal distribution in parallel.
+#' Generate from a normal distribution using a gpu.
 #' 
 #' @param n 
 #' The number of values to generate

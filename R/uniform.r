@@ -1,6 +1,6 @@
 #' curand_uniform
 #' 
-#' Generate from a uniform distribution in parallel.
+#' Generate from a uniform distribution using a gpu.
 #' 
 #' @details
 #' The function uses thrust's implementation of the minimal standard random
