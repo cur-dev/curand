@@ -10,7 +10,7 @@ Imports:
     float (>= 0.1-2)
 LinkingTo:
     float (>= 0.1-2)
-SystemRequirements: C++11. GNU make.
+SystemRequirements: GNU make. Nvidia's CUDA toolkit (>= 9.1)
 ByteCompile: yes
 BugReports: https://github.com/wrathematics/curand/issues
 Authors@R: c(
