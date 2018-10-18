@@ -1,15 +1,7 @@
-#include "cuutils.h"
+#include "cu_utils.h"
+#include "rand_utils.h"
 #include "Rcurand.h"
 
-
-__global__ void setup_curand_rng(const int seed, curandState *state, const int gpulen)
-{
-  int idx = threadIdx.x+blockDim.x*blockIdx.x;
-  if (idx >= gpulen)
-    return;
-  
-  curand_init(seed, idx, 0, state + idx);
-}
 
 template <typename T>
 __global__ void runif(curandState *state, const T min, const T max, const int gpulen, T *x)
@@ -20,42 +12,6 @@ __global__ void runif(curandState *state, const T min, const T max, const int gp
   
   T tmp = curand_uniform(state + idx);
   x[idx] = min + (max - min)*tmp;
-}
-
-
-
-template <typename T>
-static inline void curand_rng_driver(const unsigned int seed, const R_xlen_t n, const T min, const T max, T *x, void(*fp)(curandState *, const T, const T, const int, T *))
-{
-  int gpulen;
-  curandState *state;
-  T *x_gpu;
-  
-  get_gpulen(n, &gpulen);
-  cudaMalloc(&state, gpulen*sizeof(*state));
-  cudaMalloc(&x_gpu, gpulen*sizeof(*x_gpu));
-  
-  int runs = (int) MAX((R_xlen_t) n/gpulen, 1);
-  int rem = (int) MAX((n - (R_xlen_t)(runs*gpulen)), 0);
-  int runlen = MAX(gpulen/TPB, 1);
-  
-  setup_curand_rng<<<runlen, TPB>>>(seed, state, gpulen);
-  for (int i=0; i<runs; i++)
-  {
-    fp<<<runlen, TPB>>>(state, min, max, gpulen, x_gpu);
-    cudaMemcpy(x + (R_xlen_t)i*gpulen, x_gpu, gpulen*sizeof(*x_gpu), cudaMemcpyDeviceToHost);
-  }
-  
-  if (rem)
-  {
-    runlen = MAX(rem/TPB, 1);
-    fp<<<runlen, TPB>>>(state, min, max, gpulen, x_gpu);
-    cudaMemcpy(x + (R_xlen_t)runs*gpulen, x_gpu, rem*sizeof(*x_gpu), cudaMemcpyDeviceToHost);
-  }
-  
-  
-  cudaFree(x_gpu);
-  cudaFree(state);
 }
 
 

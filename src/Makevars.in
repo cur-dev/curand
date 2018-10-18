@@ -9,7 +9,7 @@ CUDA_LDFLAGS = @CUDA_LDFLAGS@
 
 PKG_LIBS = $(FLOAT_LIBS) $(CUDA_LDFLAGS) -lcudart
 
-CUDA_OBJS = uniform.o
+CUDA_OBJS = init.o uniform.o
 C_OBJS = curand_native.o getseed.o setnan.o
 OBJECTS = $(CUDA_OBJS) $(C_OBJS)
 

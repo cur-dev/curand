@@ -7,9 +7,6 @@
 #include <R.h>
 #include <Rinternals.h>
 
-#define MAX(a,b) ((a)<(b)?(b):(a))
-#define MIN(a,b) ((a)<(b)?(a):(b))
-
 #define INT(x) INTEGER(x)[0]
 #define DBL(x) REAL(x)[0]
 
