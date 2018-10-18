@@ -35,7 +35,13 @@ Also, R must have been compiled with `--enable-R-shlib=yes`. Otherwise, the pack
 
 ## Package Use
 
-We offer several generators that behave similarly to those in the stats package. So `curand_uniform()` works like `runif()`, `curand_normal()` works like `rnorm()`, etc. Function calls map to the CUDA curand library, but the function arguments/behavior are similar to their base R counterparts.
+We offer several generators. Alphabetically, these are:
+
+* `curand_normal()`
+* `curand_poisson()`
+* `curand_uniform()`
+
+These generators that behave similarly to those in the stats package. So `curand_uniform()` works like `runif()`, `curand_normal()` works like `rnorm()`, etc. Function calls map to the CUDA curand library, but the function arguments/behavior are similar to their base R counterparts.
 
 Only one gpu will be used at a time. My opinion is that if you want to do multi-gpu, you should be distributing your work with something like MPI. See the [pbdMPI package](https://cran.r-project.org/web/packages/pbdMPI/index.html).
 

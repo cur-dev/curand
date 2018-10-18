@@ -10,12 +10,12 @@
 __global__ void setup_curand_rng(const int seed, curandState *state, const int gpulen);
 
 
-template <typename T>
-static inline void curand_rng_driver(const unsigned int seed, const R_xlen_t n, const T a, const T b, T *x, void(*fp)(curandState *, const T, const T, const int, T *))
+template <typename T, typename S>
+static inline void curand_rng_driver(const unsigned int seed, const R_xlen_t n, const T a, const T b, S *x, void(*fp)(curandState *, const T, const T, const int, S *))
 {
   int gpulen;
   curandState *state;
-  T *x_gpu;
+  S *x_gpu;
   
   get_gpulen(n, &gpulen);
   cudaMalloc(&state, gpulen*sizeof(*state));
