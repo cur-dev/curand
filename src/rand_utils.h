@@ -11,7 +11,7 @@ __global__ void setup_curand_rng(const int seed, curandState *state, const int g
 
 
 template <typename T>
-static inline void curand_rng_driver(const unsigned int seed, const R_xlen_t n, const T min, const T max, T *x, void(*fp)(curandState *, const T, const T, const int, T *))
+static inline void curand_rng_driver(const unsigned int seed, const R_xlen_t n, const T a, const T b, T *x, void(*fp)(curandState *, const T, const T, const int, T *))
 {
   int gpulen;
   curandState *state;
@@ -28,14 +28,14 @@ static inline void curand_rng_driver(const unsigned int seed, const R_xlen_t n, 
   setup_curand_rng<<<runlen, TPB>>>(seed, state, gpulen);
   for (int i=0; i<runs; i++)
   {
-    fp<<<runlen, TPB>>>(state, min, max, gpulen, x_gpu);
+    fp<<<runlen, TPB>>>(state, a, b, gpulen, x_gpu);
     cudaMemcpy(x + (R_xlen_t)i*gpulen, x_gpu, gpulen*sizeof(*x_gpu), cudaMemcpyDeviceToHost);
   }
   
   if (rem)
   {
     runlen = MAX(rem/TPB, 1);
-    fp<<<runlen, TPB>>>(state, min, max, gpulen, x_gpu);
+    fp<<<runlen, TPB>>>(state, a, b, gpulen, x_gpu);
     cudaMemcpy(x + (R_xlen_t)runs*gpulen, x_gpu, rem*sizeof(*x_gpu), cudaMemcpyDeviceToHost);
   }
   
