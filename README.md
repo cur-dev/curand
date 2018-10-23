@@ -36,6 +36,7 @@ Also, R must have been compiled with `--enable-R-shlib=yes`. Otherwise, the pack
 
 We offer several generators. Alphabetically, these are:
 
+* `curand_log_normal()`
 * `curand_normal()`
 * `curand_poisson()`
 * `curand_uniform()`
