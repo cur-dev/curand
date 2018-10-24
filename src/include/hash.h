@@ -1,5 +1,5 @@
-#ifndef RCURAND_HASH_
-#define RCURAND_HASH_
+#ifndef _RCURAND_HASH_
+#define _RCURAND_HASH_
 
 
 // The hash function from the thrust devs

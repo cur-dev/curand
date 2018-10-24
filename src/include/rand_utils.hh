@@ -1,5 +1,5 @@
-#ifndef _RAND_UTILS_H_
-#define _RAND_UTILS_H_
+#ifndef _RCURAND_RAND_UTILS_H_
+#define _RCURAND_RAND_UTILS_H_
 
 
 #include <curand.h>

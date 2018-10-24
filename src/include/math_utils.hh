@@ -1,5 +1,5 @@
-#ifndef _MATH_UTILS_H_
-#define _MATH_UTILS_H_
+#ifndef _RCURAND_MATH_UTILS_H_
+#define _RCURAND_MATH_UTILS_H_
 
 
 __device__ static inline float Pow(const float x, const float y)

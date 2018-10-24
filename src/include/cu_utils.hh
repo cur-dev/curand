@@ -1,5 +1,5 @@
-#ifndef _CU_UTILS_H_
-#define _CU_UTILS_H_
+#ifndef _RCURAND_CU_UTILS_H_
+#define _RCURAND_CU_UTILS_H_
 
 
 #include <curand.h>

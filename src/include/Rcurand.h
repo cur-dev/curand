@@ -1,5 +1,5 @@
-#ifndef __RCURAND__
-#define __RCURAND__
+#ifndef _RCURAND_H_
+#define _RCURAND_H_
 
 
 #include <float/float32.h>
