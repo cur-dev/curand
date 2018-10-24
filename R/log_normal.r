@@ -1,11 +1,11 @@
 #' curand_log_normal
 #' 
-#' Generate from a normal distribution using a gpu.
+#' Generate from a log normal distribution using a gpu.
 #' 
 #' @param n 
 #' The number of values to generate
-#' @param mean,sd 
-#' Parameters for normal random variables.
+#' @param meanlog,sdlog 
+#' Parameters for log normal random variables.
 #' @param seed 
 #' Seed for the random number generation.
 #' @param type
@@ -13,7 +13,7 @@
 #' 
 #' @useDynLib curand R_curand_log_normal
 #' @export
-curand_log_normal <- function(n, meanlog=0, sdlog=1, seed=getseed(), type="double")
+curand_log_normal = function(n, meanlog=0, sdlog=1, seed=getseed(), type="double")
 {
   type = match.arg(tolower(type), c("double", "float"))
   type = ifelse(type == "double", TYPE_DOUBLE, TYPE_FLOAT)

@@ -13,7 +13,7 @@
 #' 
 #' @useDynLib curand R_curand_normal
 #' @export
-curand_normal <- function(n, mean=0, sd=1, seed=getseed(), type="double")
+curand_normal = function(n, mean=0, sd=1, seed=getseed(), type="double")
 {
   type = match.arg(tolower(type), c("double", "float"))
   type = ifelse(type == "double", TYPE_DOUBLE, TYPE_FLOAT)

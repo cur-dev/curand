@@ -10,13 +10,13 @@ curand_log_normal(n, meanlog = 0, sdlog = 1, seed = getseed(),
 \arguments{
 \item{n}{The number of values to generate}
 
+\item{meanlog, sdlog}{Parameters for log normal random variables.}
+
 \item{seed}{Seed for the random number generation.}
 
 \item{type}{'double' or 'float'}
-
-\item{mean, sd}{Parameters for normal random variables.}
 }
 \description{
-Generate from a normal distribution using a gpu.
+Generate from a log normal distribution using a gpu.
 }
 
