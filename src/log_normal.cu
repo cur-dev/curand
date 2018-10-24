@@ -1,6 +1,6 @@
-#include "cu_utils.hh"
-#include "rand_utils.hh"
-#include "Rcurand.h"
+#include "include/cu_utils.hh"
+#include "include/rand_utils.hh"
+#include "include/Rcurand.h"
 
 
 template <typename T>

@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-#include "Rcurand.h"
+#include "include/Rcurand.h"
 
 
 static inline void set_vec_nan(const R_xlen_t n, double *const x)

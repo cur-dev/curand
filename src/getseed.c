@@ -1,4 +1,4 @@
-#include "Rcurand.h"
+#include "include/Rcurand.h"
 
 
 // Robert Jenkins' 96 bit Mix Function

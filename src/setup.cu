@@ -1,4 +1,4 @@
-#include "cu_utils.hh"
+#include "include/cu_utils.hh"
 
 
 __global__ void setup_curand_rng(const int seed, curandState *state, const int gpulen)

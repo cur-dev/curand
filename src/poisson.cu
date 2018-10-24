@@ -1,6 +1,6 @@
-#include "cu_utils.hh"
-#include "rand_utils.hh"
-#include "Rcurand.h"
+#include "include/cu_utils.hh"
+#include "include/rand_utils.hh"
+#include "include/Rcurand.h"
 
 
 __global__ void rpois(curandState *state, const double lambda, const double ignore, const int gpulen, int *x)
