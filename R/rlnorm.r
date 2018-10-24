@@ -1,4 +1,4 @@
-#' curand_log_normal
+#' rlnorm
 #' 
 #' Generate from a log normal distribution using a gpu.
 #' 
@@ -17,9 +17,9 @@
 #' @references CUDA Toolkit Documentation for cuRAND
 #' \url{https://docs.nvidia.com/cuda/curand/index.html}
 #' 
-#' @useDynLib curand R_curand_log_normal
+#' @useDynLib curand R_curand_rlnorm
 #' @export
-curand_log_normal = function(n, meanlog=0, sdlog=1, seed=getseed(), type="double")
+rlnorm = function(n, meanlog=0, sdlog=1, seed=getseed(), type="double")
 {
   type = match.arg(tolower(type), c("double", "float"))
   type = ifelse(type == "double", TYPE_DOUBLE, TYPE_FLOAT)
@@ -43,7 +43,7 @@ curand_log_normal = function(n, meanlog=0, sdlog=1, seed=getseed(), type="double
     ret = setnan(n1, n2, type)
   }
   else
-    ret = .Call(R_curand_log_normal, as.integer(n1), as.integer(n2), as.double(meanlog), as.double(sdlog), as.integer(seed), type)
+    ret = .Call(R_curand_rlnorm, as.integer(n1), as.integer(n2), as.double(meanlog), as.double(sdlog), as.integer(seed), type)
   
   if (type == TYPE_DOUBLE)
     ret

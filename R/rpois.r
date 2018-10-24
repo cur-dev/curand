@@ -1,4 +1,4 @@
-#' curand_poisson
+#' rpois
 #' 
 #' Generate from a poisson distribution using a gpu.
 #' 
@@ -18,9 +18,9 @@
 #' @references CUDA Toolkit Documentation for cuRAND
 #' \url{https://docs.nvidia.com/cuda/curand/index.html}
 #' 
-#' @useDynLib curand R_curand_poisson
+#' @useDynLib curand R_curand_rpois
 #' @export
-curand_poisson = function(n, lambda=1, seed=getseed(), type="double")
+rpois = function(n, lambda=1, seed=getseed(), type="double")
 {
   n1 = floor(sqrt(n))
   n2 = n - n1*n1
@@ -36,7 +36,7 @@ curand_poisson = function(n, lambda=1, seed=getseed(), type="double")
     ret = setnan(n1, n2, type)
   }
   else
-    ret = .Call(R_curand_poisson, as.integer(n1), as.integer(n2), as.double(lambda), as.integer(seed))
+    ret = .Call(R_curand_rpois, as.integer(n1), as.integer(n2), as.double(lambda), as.integer(seed))
   
   ret
 }

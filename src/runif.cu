@@ -16,7 +16,7 @@ __global__ void runif(curandState *state, const T min, const T max, const int gp
 
 
 
-extern "C" SEXP R_curand_uniform(SEXP n1_, SEXP n2_, SEXP min_, SEXP max_, SEXP seed_, SEXP type_)
+extern "C" SEXP R_curand_runif(SEXP n1_, SEXP n2_, SEXP min_, SEXP max_, SEXP seed_, SEXP type_)
 {
   SEXP x;
   const int32_t n1 = INT(n1_);

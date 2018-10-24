@@ -1,4 +1,4 @@
-#' curand_exponetial
+#' rexp
 #' 
 #' Generate from a exponential distribution using a gpu.
 #' 
@@ -21,9 +21,9 @@
 #' 
 #' Rizzo, M.L., 2007. Statistical computing with R. Chapman and Hall/CRC.
 #' 
-#' @useDynLib curand R_curand_exponential
+#' @useDynLib curand R_curand_rexp
 #' @export
-curand_exponetial = function(n, rate=1, seed=getseed(), type="double")
+rexp = function(n, rate=1, seed=getseed(), type="double")
 {
   type = match.arg(tolower(type), c("double", "float"))
   type = ifelse(type == "double", TYPE_DOUBLE, TYPE_FLOAT)
@@ -47,7 +47,7 @@ curand_exponetial = function(n, rate=1, seed=getseed(), type="double")
     ret = setnan(n1, n2, type)
   }
   else
-    ret = .Call(R_curand_exponential, as.integer(n1), as.integer(n2), as.double(rate), as.integer(seed), type)
+    ret = .Call(R_curand_rexp, as.integer(n1), as.integer(n2), as.double(rate), as.integer(seed), type)
   
   if (type == TYPE_DOUBLE)
     ret

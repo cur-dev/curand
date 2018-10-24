@@ -9,7 +9,7 @@ CUDA_LDFLAGS = @CUDA_LDFLAGS@
 
 PKG_LIBS = $(FLOAT_LIBS) $(CUDA_LDFLAGS) -lcudart
 
-CUDA_OBJS = exponential.o log_normal.o normal.o poisson.o setup.o uniform.o weibull.o
+CUDA_OBJS = rexp.o rlnorm.o rnorm.o rpois.o runif.o rweibull.o setup.o
 C_OBJS = curand_native.o getseed.o setnan.o
 OBJECTS = $(CUDA_OBJS) $(C_OBJS)
 

@@ -1,4 +1,4 @@
-#' curand_weibull
+#' rweibull
 #' 
 #' Generate from a weibull distribution using a gpu.
 #' 
@@ -17,9 +17,9 @@
 #' 
 #' Rizzo, M.L., 2007. Statistical computing with R. Chapman and Hall/CRC.
 #' 
-#' @useDynLib curand R_curand_weibull
+#' @useDynLib curand R_curand_rweibull
 #' @export
-curand_weibull = function(n, shape, scale=1, seed=getseed(), type="double")
+rweibull = function(n, shape, scale=1, seed=getseed(), type="double")
 {
   type = match.arg(tolower(type), c("double", "float"))
   type = ifelse(type == "double", TYPE_DOUBLE, TYPE_FLOAT)
@@ -43,7 +43,7 @@ curand_weibull = function(n, shape, scale=1, seed=getseed(), type="double")
     ret = setnan(n1, n2, type)
   }
   else
-    ret = .Call(R_curand_weibull, as.integer(n1), as.integer(n2), as.double(shape), as.double(scale), as.integer(seed), type)
+    ret = .Call(R_curand_rweibull, as.integer(n1), as.integer(n2), as.double(shape), as.double(scale), as.integer(seed), type)
   
   if (type == TYPE_DOUBLE)
     ret

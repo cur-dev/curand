@@ -1,23 +1,22 @@
 #include "include/cu_utils.hh"
-#include "include/math_utils.hh"
 #include "include/rand_utils.hh"
 #include "include/Rcurand.h"
 
 
 template <typename T>
-__global__ void rweibull(curandState *state, const T shape, const T scale, const int gpulen, T *x)
+__global__ void rnorm(curandState *state, const T mean, const T sd, const int gpulen, T *x)
 {
   int idx = threadIdx.x + blockDim.x*blockIdx.x;
   if (idx >= gpulen)
     return;
   
-  T tmp = curand_uniform(state + idx);
-  x[idx] = Pow(-Pow(scale, shape) * Log(1-tmp), 1/shape);
+  T tmp = curand_normal(state + idx);
+  x[idx] = sd*tmp + mean;
 }
 
 
 
-extern "C" SEXP R_curand_weibull(SEXP n1_, SEXP n2_, SEXP shape_, SEXP scale_, SEXP seed_, SEXP type_)
+extern "C" SEXP R_curand_rnorm(SEXP n1_, SEXP n2_, SEXP mean_, SEXP sd_, SEXP seed_, SEXP type_)
 {
   SEXP x;
   const int32_t n1 = INT(n1_);
@@ -27,19 +26,19 @@ extern "C" SEXP R_curand_weibull(SEXP n1_, SEXP n2_, SEXP shape_, SEXP scale_, S
   const unsigned int seed = INTEGER(seed_)[0];
   const int type = INT(type_);
   
-  const double shape = REAL(shape_)[0];
-  const double scale = REAL(scale_)[0];
+  const double mean = REAL(mean_)[0];
+  const double sd = REAL(sd_)[0];
   
   
   if (type == TYPE_DOUBLE)
   {
     PROTECT(x = allocVector(REALSXP, n));
-    curand_rng_driver(seed, n, shape, scale, REAL(x), rweibull);
+    curand_rng_driver(seed, n, mean, sd, REAL(x), rnorm);
   }
   else if (type == TYPE_FLOAT)
   {
     PROTECT(x = allocVector(INTSXP, n));
-    curand_rng_driver(seed, n, (float)shape, (float)scale, FLOAT(x), rweibull);
+    curand_rng_driver(seed, n, (float)mean, (float)sd, FLOAT(x), rnorm);
   }
   else
     error("impossible type\n");

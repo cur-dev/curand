@@ -14,7 +14,7 @@ __global__ void rpois(curandState *state, const double lambda, const double igno
 
 
 
-extern "C" SEXP R_curand_poisson(SEXP n1_, SEXP n2_, SEXP lambda_, SEXP seed_)
+extern "C" SEXP R_curand_rpois(SEXP n1_, SEXP n2_, SEXP lambda_, SEXP seed_)
 {
   SEXP x;
   const int32_t n1 = INT(n1_);

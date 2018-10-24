@@ -1,14 +1,14 @@
-#' curand_normal
+#' runif
 #' 
-#' Generate from a normal distribution using a gpu.
+#' Generate from a uniform distribution using a gpu.
 #' 
 #' @details
-#' Uses \code{curand_normal()} from cuRAND.
+#' Uses \code{curand_uniform()} from cuRAND.
 #' 
 #' @param n 
 #' The number of values to generate
-#' @param mean,sd 
-#' Parameters for normal random variables.
+#' @param min,max 
+#' Parameters for uniform random variables.
 #' @param seed 
 #' Seed for the random number generation.
 #' @param type
@@ -17,9 +17,9 @@
 #' @references CUDA Toolkit Documentation for cuRAND
 #' \url{https://docs.nvidia.com/cuda/curand/index.html}
 #' 
-#' @useDynLib curand R_curand_normal
+#' @useDynLib curand R_curand_runif
 #' @export
-curand_normal = function(n, mean=0, sd=1, seed=getseed(), type="double")
+runif = function(n, min=0, max=1, seed=getseed(), type="double")
 {
   type = match.arg(tolower(type), c("double", "float"))
   type = ifelse(type == "double", TYPE_DOUBLE, TYPE_FLOAT)
@@ -37,13 +37,13 @@ curand_normal = function(n, mean=0, sd=1, seed=getseed(), type="double")
   n1 = floor(sqrt(n))
   n2 = n - n1*n1
   
-  if (sd < 0 || is.badval(mean) || is.badval(sd))
+  if (min > max || is.badval(min) || is.badval(max))
   {
     warning("NAs produced")
     ret = setnan(n1, n2, type)
   }
   else
-    ret = .Call(R_curand_normal, as.integer(n1), as.integer(n2), as.double(mean), as.double(sd), as.integer(seed), type)
+    ret = .Call(R_curand_runif, as.integer(n1), as.integer(n2), as.double(min), as.double(max), as.integer(seed), type)
   
   if (type == TYPE_DOUBLE)
     ret
