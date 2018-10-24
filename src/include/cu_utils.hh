@@ -15,7 +15,7 @@
 
 static inline void get_gpulen(const R_xlen_t n, int *const gpulen)
 {
-  if (n > (R_xlen_t)TPB)
+  if (n > (R_xlen_t)TPB*512)
     *gpulen = TPB*512;
   else
     *gpulen = (int) n;
