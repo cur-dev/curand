@@ -4,14 +4,13 @@
 
 
 template <typename T>
-__global__ void rlnorm(curandState *state, const T mean, const T sd, const int gpulen, T *x)
+__global__ void rlnorm(curandState *state, const T meanlog, const T sdlog, const int gpulen, T *x)
 {
   int idx = threadIdx.x + blockDim.x*blockIdx.x;
   if (idx >= gpulen)
     return;
   
-  T tmp = curand_normal(state + idx);
-  x[idx] = sd*tmp + mean;
+  x[idx] = curand_log_normal(state + idx, meanlog, sdlog);
 }
 
 
