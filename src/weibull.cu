@@ -10,7 +10,7 @@ __global__ void rweibull(curandState *state, const T shape, const T scale, const
   int idx = threadIdx.x + blockDim.x*blockIdx.x;
   if (idx >= gpulen)
     return;
-
+  
   T tmp = curand_uniform(state + idx);
   x[idx] = Pow(-Pow(scale, shape) * Log(1-tmp), 1/shape);
 }
