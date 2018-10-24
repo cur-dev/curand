@@ -5,7 +5,7 @@
 \alias{curand-package}
 \title{curand}
 \description{
-Random number generators that run on the gpu via CUDA's curand
+Random number generators that run on the gpu via CUDA's cuRAND
 library.
 }
 \author{

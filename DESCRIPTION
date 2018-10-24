@@ -2,7 +2,7 @@ Package: curand
 Type: Package
 Title: Bindings to CUDA Random Number Generation
 Version: 0.1-0
-Description: Random number generators that run on the gpu via CUDA's curand
+Description: Random number generators that run on the gpu via CUDA's cuRAND
     library.
 License: BSD 2-clause License + file LICENSE
 Depends:
