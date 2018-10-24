@@ -2,6 +2,15 @@
 #' 
 #' Generate from a weibull distribution using a gpu.
 #' 
+#' @details
+#' We use the cuRAND uniform generator together with the fact that if
+#' \eqn{X \sim U(0, 1)} then 
+#' 
+#' \deqn{
+#'   Y = \left[ -\beta^\alpha \log\left(1-X\right) \right]^{\frac{1}{\alpha}}
+#'     \sim Weibull(\alpha, \beta)
+#' }
+#' 
 #' @param n 
 #' The number of values to generate
 #' @param shape,scale 

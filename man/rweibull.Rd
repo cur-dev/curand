@@ -18,6 +18,15 @@ rweibull(n, shape, scale = 1, seed = getseed(), type = "double")
 \description{
 Generate from a weibull distribution using a gpu.
 }
+\details{
+We use the cuRAND uniform generator together with the fact that if
+\eqn{X \sim U(0, 1)} then 
+
+\deqn{
+  Y = \left[ -\beta^\alpha \log\left(1-X\right) \right]^{\frac{1}{\alpha}}
+    \sim Weibull(\alpha, \beta)
+}
+}
 \references{
 Casella, G. and Berger, R.L., 2002. Statistical inference (Vol. 2). Pacific
 Grove, CA: Duxbury.
