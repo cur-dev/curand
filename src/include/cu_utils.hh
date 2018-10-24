@@ -8,6 +8,8 @@
 
 #define TPB 512
 
+#define CUFREE(x) {if(x)cudaFree(x);}
+
 #define GET_ID() (threadIdx.x+blockDim.x*blockIdx.x)
 
 

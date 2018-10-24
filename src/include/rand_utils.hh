@@ -2,10 +2,8 @@
 #define _RCURAND_RAND_UTILS_H_
 
 
-#include <curand.h>
-#include <curand_kernel.h>
-
 #include "common.h"
+#include "cu_utils.hh"
 
 __global__ void setup_curand_rng(const int seed, curandState *state, const int gpulen);
 
@@ -20,6 +18,13 @@ static inline void curand_rng_driver(const unsigned int seed, const R_xlen_t n, 
   get_gpulen(n, &gpulen);
   cudaMalloc(&state, gpulen*sizeof(*state));
   cudaMalloc(&x_gpu, gpulen*sizeof(*x_gpu));
+  if (state == NULL || x_gpu == NULL)
+  {
+    CUFREE(state);
+    CUFREE(x_gpu);
+    error("Unable to allocate device memory");
+  }
+  
   
   int runs = (int) MAX((R_xlen_t) n/gpulen, 1);
   int rem = (int) MAX((n - (R_xlen_t)(runs*gpulen)), 0);
