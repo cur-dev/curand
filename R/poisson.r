@@ -12,6 +12,9 @@
 #' Ignored; present only to match API with other generators. The return is
 #' always a vector of ints.
 #' 
+#' @references CUDA Toolkit Documentation for cuRAND
+#' \url{https://docs.nvidia.com/cuda/curand/index.html}
+#' 
 #' @useDynLib curand R_curand_poisson
 #' @export
 curand_poisson = function(n, lambda=1, seed=getseed(), type="double")

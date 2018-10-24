@@ -11,6 +11,9 @@
 #' @param type
 #' 'double' or 'float'
 #' 
+#' @references CUDA Toolkit Documentation for cuRAND
+#' \url{https://docs.nvidia.com/cuda/curand/index.html}
+#' 
 #' @useDynLib curand R_curand_log_normal
 #' @export
 curand_log_normal = function(n, meanlog=0, sdlog=1, seed=getseed(), type="double")

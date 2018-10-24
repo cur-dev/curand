@@ -18,4 +18,8 @@ curand_normal(n, mean = 0, sd = 1, seed = getseed(), type = "double")
 \description{
 Generate from a normal distribution using a gpu.
 }
+\references{
+CUDA Toolkit Documentation for cuRAND
+\url{https://docs.nvidia.com/cuda/curand/index.html}
+}
 
