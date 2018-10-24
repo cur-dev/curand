@@ -9,17 +9,19 @@ curand_weibull(n, shape, scale = 1, seed = getseed(), type = "double")
 \arguments{
 \item{n}{The number of values to generate}
 
+\item{shape, scale}{Parameters for weibull random variables.}
+
 \item{seed}{Seed for the random number generation.}
 
 \item{type}{'double' or 'float'}
-
-\item{mean, sd}{Parameters for weibull random variables.}
 }
 \description{
 Generate from a weibull distribution using a gpu.
 }
 \references{
-Rizzo, M.L., 2007. Statistical computing with R. Chapman and
-Hall/CRC.
+Casella, G. and Berger, R.L., 2002. Statistical inference (Vol. 2). Pacific
+Grove, CA: Duxbury.
+
+Rizzo, M.L., 2007. Statistical computing with R. Chapman and Hall/CRC.
 }
 

@@ -4,15 +4,18 @@
 #' 
 #' @param n 
 #' The number of values to generate
-#' @param mean,sd 
+#' @param shape,scale 
 #' Parameters for weibull random variables.
 #' @param seed 
 #' Seed for the random number generation.
 #' @param type
 #' 'double' or 'float'
 #' 
-#' @references Rizzo, M.L., 2007. Statistical computing with R. Chapman and
-#' Hall/CRC.
+#' @references
+#' Casella, G. and Berger, R.L., 2002. Statistical inference (Vol. 2). Pacific
+#' Grove, CA: Duxbury.
+#' 
+#' Rizzo, M.L., 2007. Statistical computing with R. Chapman and Hall/CRC.
 #' 
 #' @useDynLib curand R_curand_weibull
 #' @export
