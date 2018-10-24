@@ -5,7 +5,7 @@
 * **Author:** Drew Schmidt
 
 
-Fast random number generators on gpu's via CUDA.
+Fast random number generators on gpu's via NVIDIA® CUDA™. Not officially affiliated with or endorsed by NVIDIA in any way, but we like their work.
 
 
 ## Installation
@@ -42,7 +42,7 @@ We offer several generators. Alphabetically, these are:
 * `curand_uniform()`
 * `curand_weibull()`
 
-These generators that behave similarly to those in the stats package. So `curand_uniform()` works like `runif()`, `curand_normal()` works like `rnorm()`, etc. Function calls map to the CUDA curand library, but the function arguments/behavior are similar to their base R counterparts.
+These generators that behave similarly to those in the stats package. So `curand_uniform()` works like `runif()`, `curand_normal()` works like `rnorm()`, etc. Function calls map to the cuRAND, but the function arguments/behavior are similar to their base R counterparts.
 
 Only one gpu will be used at a time. My opinion is that if you want to do multi-gpu, you should be distributing your work with something like MPI. See the [pbdMPI package](https://cran.r-project.org/web/packages/pbdMPI/index.html).
 
