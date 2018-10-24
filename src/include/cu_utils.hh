@@ -31,6 +31,7 @@ static inline void cu_check_ret(cudaError_t code, char *file, int line)
 }
 
 
+/*
 static inline int check_(size_t gpu_memneed)
 {
   size_t gpu_memfree;
@@ -42,6 +43,7 @@ static inline int check_(size_t gpu_memneed)
   else
     return -1;
 }
+*/
 
 
 #endif
