@@ -40,6 +40,7 @@ We offer several generators. Alphabetically, these are:
 * `curand_normal()`
 * `curand_poisson()`
 * `curand_uniform()`
+* `curand_weibull()`
 
 These generators that behave similarly to those in the stats package. So `curand_uniform()` works like `runif()`, `curand_normal()` works like `rnorm()`, etc. Function calls map to the CUDA curand library, but the function arguments/behavior are similar to their base R counterparts.
 
