@@ -19,6 +19,9 @@ curand_log_normal(n, meanlog = 0, sdlog = 1, seed = getseed(),
 \description{
 Generate from a log normal distribution using a gpu.
 }
+\details{
+Uses \code{curand_log_normal()} from cuRAND.
+}
 \references{
 CUDA Toolkit Documentation for cuRAND
 \url{https://docs.nvidia.com/cuda/curand/index.html}

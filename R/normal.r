@@ -2,6 +2,9 @@
 #' 
 #' Generate from a normal distribution using a gpu.
 #' 
+#' @details
+#' Uses \code{curand_normal()} from cuRAND.
+#' 
 #' @param n 
 #' The number of values to generate
 #' @param mean,sd 

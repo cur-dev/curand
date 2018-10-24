@@ -2,6 +2,9 @@
 #' 
 #' Generate from a poisson distribution using a gpu.
 #' 
+#' @details
+#' Uses \code{curand_poisson()} from cuRAND.
+#' 
 #' @param n 
 #' The number of values to generate
 #' @param lambda

@@ -2,6 +2,9 @@
 #' 
 #' Generate from a uniform distribution using a gpu.
 #' 
+#' @details
+#' Uses \code{curand_uniform()} from cuRAND.
+#' 
 #' @param n 
 #' The number of values to generate
 #' @param min,max 

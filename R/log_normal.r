@@ -2,6 +2,9 @@
 #' 
 #' Generate from a log normal distribution using a gpu.
 #' 
+#' @details
+#' Uses \code{curand_log_normal()} from cuRAND.
+#' 
 #' @param n 
 #' The number of values to generate
 #' @param meanlog,sdlog 

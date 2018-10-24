@@ -18,6 +18,9 @@ curand_uniform(n, min = 0, max = 1, seed = getseed(), type = "double")
 \description{
 Generate from a uniform distribution using a gpu.
 }
+\details{
+Uses \code{curand_uniform()} from cuRAND.
+}
 \references{
 CUDA Toolkit Documentation for cuRAND
 \url{https://docs.nvidia.com/cuda/curand/index.html}

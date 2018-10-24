@@ -19,6 +19,9 @@ always a vector of ints.}
 \description{
 Generate from a poisson distribution using a gpu.
 }
+\details{
+Uses \code{curand_poisson()} from cuRAND.
+}
 \references{
 CUDA Toolkit Documentation for cuRAND
 \url{https://docs.nvidia.com/cuda/curand/index.html}
