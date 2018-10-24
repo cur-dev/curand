@@ -18,4 +18,8 @@ curand_weibull(n, shape, scale = 1, seed = getseed(), type = "double")
 \description{
 Generate from a weibull distribution using a gpu.
 }
+\references{
+Rizzo, M.L., 2007. Statistical computing with R. Chapman and
+Hall/CRC.
+}
 

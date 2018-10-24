@@ -11,6 +11,9 @@
 #' @param type
 #' 'double' or 'float'
 #' 
+#' @references Rizzo, M.L., 2007. Statistical computing with R. Chapman and
+#' Hall/CRC.
+#' 
 #' @useDynLib curand R_curand_weibull
 #' @export
 curand_weibull = function(n, shape, scale=1, seed=getseed(), type="double")
