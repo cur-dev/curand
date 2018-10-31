@@ -77,7 +77,7 @@ LDFLAGS="$CUDA_LDFLAGS $LDFLAGS"
 
 # And the header and the lib
 AC_CHECK_HEADER([cuda.h], [], AC_MSG_FAILURE([Couldn't find cuda.h]), [#include <cuda.h>])
-AC_CHECK_LIB([cuda], [cuInit], [], AC_MSG_FAILURE([Couldn't find libcuda]))
+AC_CHECK_LIB([cudart], [cudaMalloc], [], AC_MSG_FAILURE([Couldn't find libcuda]))
 
 # Returning to the original flags
 CFLAGS=${ax_save_CFLAGS}

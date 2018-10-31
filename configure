@@ -2867,13 +2867,13 @@ See \`config.log' for more details" "$LINENO" 5; }
 fi
 
 
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for cuInit in -lcuda" >&5
-$as_echo_n "checking for cuInit in -lcuda... " >&6; }
-if ${ac_cv_lib_cuda_cuInit+:} false; then :
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for cudaMalloc in -lcudart" >&5
+$as_echo_n "checking for cudaMalloc in -lcudart... " >&6; }
+if ${ac_cv_lib_cudart_cudaMalloc+:} false; then :
   $as_echo_n "(cached) " >&6
 else
   ac_check_lib_save_LIBS=$LIBS
-LIBS="-lcuda  $LIBS"
+LIBS="-lcudart  $LIBS"
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -2883,32 +2883,32 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 #ifdef __cplusplus
 extern "C"
 #endif
-char cuInit ();
+char cudaMalloc ();
 int
 main ()
 {
-return cuInit ();
+return cudaMalloc ();
   ;
   return 0;
 }
 _ACEOF
 if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_lib_cuda_cuInit=yes
+  ac_cv_lib_cudart_cudaMalloc=yes
 else
-  ac_cv_lib_cuda_cuInit=no
+  ac_cv_lib_cudart_cudaMalloc=no
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_cuda_cuInit" >&5
-$as_echo "$ac_cv_lib_cuda_cuInit" >&6; }
-if test "x$ac_cv_lib_cuda_cuInit" = xyes; then :
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_cudart_cudaMalloc" >&5
+$as_echo "$ac_cv_lib_cudart_cudaMalloc" >&6; }
+if test "x$ac_cv_lib_cudart_cudaMalloc" = xyes; then :
   cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBCUDA 1
+#define HAVE_LIBCUDART 1
 _ACEOF
 
-  LIBS="-lcuda $LIBS"
+  LIBS="-lcudart $LIBS"
 
 else
   { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
